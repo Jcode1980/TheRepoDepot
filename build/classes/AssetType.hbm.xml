@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="financetrack.common.AssetType" table="AssetType">
+		<id name="assetTypeID" column="assetTypeID">
+			<generator class="native" />
+		</id>
+		<property name="name" column="name" type="string" update="true" />
+		<property name="descText" column="descText" type="string" update="true" />
+	</class>
+</hibernate-mapping>

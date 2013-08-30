@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="financetrack.common.Asset" table="Asset">
+		<id name="assetID" type="integer" column="assetID">
+			<generator class="native" />
+		</id>
+		<property name="name" column="name" type="string" update="true" />
+		<property name="descText" column="descText" type="string" update="true" />
+		<property name="address" column="address" type="string" update="true" />
+		<property name="incomeYield" column="incomeYield" type="big_decimal" update="true" />
+		
+		<many-to-one name="assettype" column="assetTypeID" class="financetrack.common.AssetType" cascade="all" not-null="false" />
+	</class>
+</hibernate-mapping>

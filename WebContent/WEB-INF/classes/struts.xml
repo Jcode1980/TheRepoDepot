@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+ 	
+ 	<package name="default" extends="hibernate-default" namespace="/">
+ 		
+		<action name="login" method="authenticate" class="financetrack.actions.LoginAction">
+			<result name="success">/AssetsList.jsp</result>
+			<result name="error">/Login.jsp</result>
+ 		</action>
+			
+		<action name="sessionLogin" class="financetrack.actions.SessionLoginAction" >
+            <result name="success" type="dispatcher">/AssetsList.jsp</result>
+            <result name="error" type="redirect">/SessionLogin.jsp</result>
+        </action>
+
+        <action name="logout2" class="financetrack.actions.SessionLoginAction" method="logout" >
+            <result name="success" type="redirect">/SessionLogin.jsp</result>
+        </action>
+
+        <action name="logout" class="financetrack.actions.SessionLoginAction" >
+            <result name="success" type="redirect">/SessionLogin.jsp</result>
+        </action>	
+	</package>	
+	
+	<package name="AssetsList" extends="struts-default" namespace="/">
+ 		<action name="searchAssets" class="financetrack.actions.AssetListAction" method="searchAssets" >
+ 			<result name="success">/AssetsList.jsp</result>
+ 		</action>		
+ 	</package>
+	<package name="AssetEdit" extends="struts-default" namespace="/">
+		<action name="createAsset" class="financetrack.actions.AssetEditAction" >
+            <result name="success" type="dispatcher">/AssetEditPage.jsp</result>
+            <result name="error" type="redirect">/SessionLogin.jsp</result>
+        </action>
+        <action name="editAsset" class="financetrack.actions.AssetEditAction" method="editAsset">
+            <result name="success" type="dispatcher">/AssetEditPage.jsp</result>
+            <result name="error" type="redirect">/AssetsList.jsp</result>
+        </action>		
+        <action name="saveAssetEditAction" class="financetrack.actions.AssetEditAction" method="saveAction">
+            <result name="success" type="dispatcher">/AssetEditPage.jsp</result>
+        </action>		
+        <action name="backActionEditAsset" class="financetrack.actions.AssetEditAction" method="backAction">
+            <result name="success" type="dispatcher">/AssetsList.jsp</result>
+            <result name="error" type="dispatcher">/AssetEditPage.jsp</result>
+        </action>		
+        <action name="cancelAssetEditAction" class="financetrack.actions.AssetEditAction" method="cancelAction">
+            <result name="success" type="redirect">/AssetsList.jsp</result>
+        </action>		
+	</package>
+	
+	
+	<constant name="struts.custom.i18n.resources" value="ApplicationResources" />
+ 
+
+</struts>

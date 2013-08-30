@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="financetrack.common.User" table="User">
+		<id name="userID" column="userID">
+			<generator class="native" />
+		</id>
+		<property name="given" column="given" type="string" update="true" />
+		<property name="surname" column="surname" type="string" update="true" />
+		<property name="email" column="email" type="string" update="true" />
+		<property name="login" column="login" type="string" update="true" />
+		
+	</class>
+</hibernate-mapping>
